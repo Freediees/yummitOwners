@@ -4,8 +4,9 @@ import styles from './styles'
 import Header from '../../molecule/header'
 import Colors from 'App/Theme/Colors'
 import HomeCard from '../../molecule/homeCard'
+import Spinner from 'App/Components/atom/customSpinner'
 
-export default function LoginScreen({ toDetailOrder, orderList, dataProccess }) {
+export default function LoginScreen({ toDetailOrder, orderList, dataProccess, isLoading = false }) {
   const [status, setStatus] = useState(0)
 
   const renderOrderList = (item) => {
@@ -24,6 +25,7 @@ export default function LoginScreen({ toDetailOrder, orderList, dataProccess }) 
 
   return (
     <View style={{ flex: 1 }}>
+      <Spinner visible={isLoading} />
       <Header />
       <View
         style={{
