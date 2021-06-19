@@ -3,8 +3,8 @@ import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/lib/integration/react'
 import createStore from 'App/Stores'
 import RootScreen from './Containers/Root/RootScreen'
-
 import setup from './Utils/Firebase'
+console.disableYellowBox = true
 
 const { store, persistor } = createStore()
 

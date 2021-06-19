@@ -8,8 +8,10 @@ import auth from '@react-native-firebase/auth'
 import AsyncStorage from '@react-native-community/async-storage'
 
 const LoginContainer = ({ navigation, loginData, fetchLogin }) => {
+  const [isLoading, setIsLoading] = useState(false)
   const goToHome = async (phone, email) => {
     // alert('login')
+    'sinsi'
     fetchLogin({
       PhoneNumber: await phone,
       Email: await email,
@@ -17,22 +19,22 @@ const LoginContainer = ({ navigation, loginData, fetchLogin }) => {
   }
 
   const checkLogin = async () => {
+    setIsLoading(true)
     if (await AsyncStorage.getItem('phone')) {
       console.log(await AsyncStorage.getItem('phone'))
+      setIsLoading(false)
       goToHome(AsyncStorage.getItem('phone'), AsyncStorage.getItem('email'))
       // goToHome('+6285740707517', '')
+      setIsLoading(false)
     }
-    // AsyncStorage.setItem('email', 'ferdirahman05@gmail.com')
-    console.log('email saved : ', await AsyncStorage.getItem('email'))
-    console.log('checked')
-    // goToHome('+6285740707517', '')
+    setIsLoading(false)
   }
 
   useEffect(() => {
     checkLogin()
   }, [])
 
-  return <LoginScreen goToHome={goToHome} />
+  return <LoginScreen goToHome={goToHome} parentLoading={isLoading} />
 }
 
 const mapStateToProps = (state) => ({

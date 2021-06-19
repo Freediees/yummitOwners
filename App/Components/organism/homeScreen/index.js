@@ -1,13 +1,25 @@
 import React, { useState, useEffect } from 'react'
-import { View, Text, TouchableOpacity, FlatList } from 'react-native'
+import { View, Text, TouchableOpacity, FlatList, RefreshControl } from 'react-native'
 import styles from './styles'
 import Header from '../../molecule/header'
 import Colors from 'App/Theme/Colors'
 import HomeCard from '../../molecule/homeCard'
 import Spinner from 'App/Components/atom/customSpinner'
+import { ScrollView } from 'react-native-gesture-handler'
 
-export default function LoginScreen({ toDetailOrder, orderList, dataProccess, isLoading = false }) {
+export default function HomeScreen({
+  toDetailOrder,
+  orderList,
+  dataProccess,
+  isLoading = false,
+  getOrder,
+}) {
   const [status, setStatus] = useState(0)
+  const [refreshing, setRefreshing] = useState(false)
+
+  const onRefresh = () => {
+    getOrder()
+  }
 
   const renderOrderList = (item) => {
     return (
@@ -67,7 +79,12 @@ export default function LoginScreen({ toDetailOrder, orderList, dataProccess, is
 
       <View style={styles.container}>
         {status == 0 ? (
-          <FlatList data={orderList} renderItem={(item) => renderOrderList(item)} />
+          <FlatList
+            data={orderList}
+            renderItem={(item) => renderOrderList(item)}
+            onRefresh={onRefresh}
+            refreshing={refreshing}
+          />
         ) : status == 1 ? (
           <FlatList data={dataProccess || []} renderItem={(item) => renderOrderList(item)} />
         ) : (

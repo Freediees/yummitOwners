@@ -11,6 +11,13 @@ const HomeContainer = ({ navigation, menu, login, fetchOrder }) => {
   const [dataProccess, setDataProccess] = useState(null)
 
   useEffect(() => {
+    
+    getOrder()
+    fetchProccess()
+
+  }, [login])
+
+  const getOrder = () => {
     fetchOrder({
       Token: navigation.getParam('PhoneNumber'),
       EntityId: navigation.getParam('EntityId'),
@@ -18,10 +25,7 @@ const HomeContainer = ({ navigation, menu, login, fetchOrder }) => {
       Count: 10,
       Status: 'placed',
     })
-
-    fetchProccess()
-
-  }, [login])
+  }
 
   const fetchProccess = async() => {
 
@@ -58,9 +62,10 @@ const HomeContainer = ({ navigation, menu, login, fetchOrder }) => {
     navigation.navigate('DetailOrderContainer', { detail: item })
   }
 
+  console.log('data procecess', menu)
   return (
     <View style={{ flex: 1 }}>
-      {menu ? <HomeScreen toDetailOrder={toDetailOrder} orderList={menu?.dataMenu || []} dataProccess={dataProccess} /> : null}
+      {menu ? <HomeScreen toDetailOrder={toDetailOrder} orderList={menu?.dataMenu || []} dataProccess={dataProccess} isLoading={menu.isLoading} getOrder={getOrder}/> : null}
     </View>
   )
 }

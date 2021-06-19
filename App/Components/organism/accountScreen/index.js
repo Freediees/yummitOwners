@@ -24,7 +24,7 @@ const ListItem = ({ label, onPress }) => {
   )
 }
 
-export default function AccountScreen({ onLoyalty }) {
+export default function AccountScreen({ onLoyalty, onLogout }) {
   return (
     <View style={{ flex: 1 }}>
       <View
@@ -38,7 +38,13 @@ export default function AccountScreen({ onLoyalty }) {
         }}
       >
         <Text style={styles.headerButton}>EDIT</Text>
-        <Text style={styles.headerButton}>LOGOUT</Text>
+        <TouchableOpacity
+          onPress={() => {
+            onLogout()
+          }}
+        >
+          <Text style={styles.headerButton}>LOGOUT</Text>
+        </TouchableOpacity>
       </View>
 
       <AvatarCard />
