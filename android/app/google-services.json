@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "658615522755",
+    "project_id": "yummitowner",
+    "storage_bucket": "yummitowner.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:658615522755:android:2290daf653f3c7f6db9976",
+        "android_client_info": {
+          "package_name": "com.yummitowner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "658615522755-3cqll1epe9hlu75kojjfj5ddlctsqcg0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.yummitowner",
+            "certificate_hash": "b8ffd44e12e84292df45386167e129728a8d17d9"
+          }
+        },
+        {
+          "client_id": "658615522755-cube9ns38fando6ntugs1i04g4ml8gle.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjbvZORUrbZya82WdQmIAQF7NHkvG334w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "658615522755-cube9ns38fando6ntugs1i04g4ml8gle.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
